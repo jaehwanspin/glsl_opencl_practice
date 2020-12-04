@@ -69,12 +69,13 @@ int main(int argc, char **argv)
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
     // Dark blue background
-
+    
     bq::vec<float, 4> colour = { 0, 0, 0, 0 };
     glm::vec4 colour_ = { 0, 0, 0, 0 };
-    gl::clear_color(colour_);
-
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    std::array<GLfloat, 4> colour__ = { 0.0f, 0.0f, 0.0f, 0.0f };
+    gl::clear_color(colour__);
+    
+    // glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
     gl::vertex_shader vertex_shader(vertex_shader_src);
     vertex_shader.compile();
@@ -84,6 +85,7 @@ int main(int argc, char **argv)
     gl::program glsl_program;
     glsl_program.attach(vertex_shader);
     glsl_program.attach(fragment_shader);
+    // std::swap()
 
     do
     {
