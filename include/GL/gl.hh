@@ -13,13 +13,20 @@
 
 namespace gl {
 
-template<typename _vec4f_type
-    >
-void clear_color(_vec4f_type& _colour)
+namespace detail {
+
+}
+
+template<typename _arr4f_type,
+typename = std::enable_if_t<
+    std::__is_tuple_like<_arr4f_type>::value> >
+void clear_color(_arr4f_type& _colour)
 {
     glClearColor(_colour[0], _colour[1],
                  _colour[2], _colour[3]);
 }
+
+
 void clear_color(GLfloat _red, GLfloat _green,
                  GLfloat _blue, GLfloat _alpha)
 {
